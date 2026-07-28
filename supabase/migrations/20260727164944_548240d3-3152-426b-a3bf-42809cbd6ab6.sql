@@ -1,0 +1,1 @@
+ALTER TABLE public.online_players ADD COLUMN IF NOT EXISTS steal_ready boolean NOT NULL DEFAULT false;

@@ -1,0 +1,311 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+ * HiddenHits — design system (v2, neon party edition)
+ * Deep black + dark purple base, rainbow neon accents:
+ * pink, blue, yellow, orange, green. Circular neon motifs,
+ * subtle particles, premium party-game feel.
+ * ============================================================ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-yellow: var(--neon-yellow);
+  --color-neon-orange: var(--neon-orange);
+  --color-neon-green: var(--neon-green);
+  /* legacy alias so pre-existing components keep working */
+  --color-neon-cyan: var(--neon-blue);
+
+  --font-sans: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+
+  /* Base canvas — deep black + dark purple */
+  --background: oklch(0.08 0.01 300);
+  --foreground: oklch(0.98 0 0);
+  --surface: oklch(0.14 0.03 300);
+  --surface-elevated: oklch(0.18 0.04 300);
+
+  --card: oklch(0.14 0.03 300);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.12 0.03 300);
+  --popover-foreground: oklch(0.98 0 0);
+
+  /* Neon palette */
+  --neon-pink: oklch(0.72 0.29 350);      /* #ff2fb0-ish */
+  --neon-blue: oklch(0.72 0.2 240);       /* #2fb0ff-ish */
+  --neon-yellow: oklch(0.92 0.19 100);    /* #ffe93b-ish */
+  --neon-orange: oklch(0.75 0.22 45);     /* #ff7a1f-ish */
+  --neon-green: oklch(0.82 0.24 145);     /* #39ff8a-ish — success / focus */
+  --neon-purple: oklch(0.62 0.28 305);
+
+  /* Primary CTA now uses pink→orange */
+  --primary: oklch(0.72 0.29 350);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.72 0.2 240);
+  --secondary-foreground: oklch(0.1 0 0);
+
+  --muted: oklch(0.22 0.02 300);
+  --muted-foreground: oklch(0.7 0.02 300);
+  --accent: oklch(0.72 0.29 350);
+  --accent-foreground: oklch(0.99 0 0);
+
+  --destructive: oklch(0.62 0.24 27);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(1 0 0 / 0.09);
+  --input: oklch(1 0 0 / 0.1);
+  --ring: oklch(0.72 0.29 350);
+
+  /* Gradients */
+  --gradient-neon: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-orange) 100%);
+  --gradient-rainbow: conic-gradient(from 210deg,
+    var(--neon-pink) 0deg,
+    var(--neon-orange) 90deg,
+    var(--neon-yellow) 180deg,
+    var(--neon-blue) 270deg,
+    var(--neon-pink) 360deg);
+  --gradient-surface: linear-gradient(180deg, oklch(0.15 0.03 300) 0%, oklch(0.09 0.02 300) 100%);
+  --gradient-glow:
+    radial-gradient(circle at 15% 0%, oklch(0.72 0.29 350 / 0.28), transparent 55%),
+    radial-gradient(circle at 85% 20%, oklch(0.72 0.2 240 / 0.22), transparent 55%),
+    radial-gradient(circle at 50% 100%, oklch(0.75 0.22 45 / 0.18), transparent 60%);
+
+  /* Shadows / glow */
+  --shadow-glow-pink: 0 0 30px oklch(0.72 0.29 350 / 0.55), 0 0 70px oklch(0.72 0.29 350 / 0.2);
+  --shadow-glow-blue: 0 0 30px oklch(0.72 0.2 240 / 0.55), 0 0 70px oklch(0.72 0.2 240 / 0.2);
+  --shadow-glow-orange: 0 0 30px oklch(0.75 0.22 45 / 0.55), 0 0 70px oklch(0.75 0.22 45 / 0.2);
+  --shadow-card: 0 10px 40px -10px oklch(0 0 0 / 0.7);
+
+  /* Glass */
+  --glass-bg: oklch(1 0 0 / 0.04);
+  --glass-border: oklch(1 0 0 / 0.09);
+}
+
+.dark {
+  --background: oklch(0.08 0.01 300);
+  --foreground: oklch(0.98 0 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-image: var(--gradient-glow);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ---------- Utilities ---------- */
+
+@utility glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px) saturate(140%);
+}
+
+@utility glass-strong {
+  background: oklch(1 0 0 / 0.06);
+  border: 1px solid oklch(1 0 0 / 0.12);
+  backdrop-filter: blur(24px) saturate(160%);
+}
+
+@utility gradient-neon {
+  background-image: var(--gradient-neon);
+}
+
+@utility gradient-rainbow {
+  background-image: var(--gradient-rainbow);
+}
+
+@utility text-gradient-neon {
+  background-image: var(--gradient-neon);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-rainbow {
+  background-image: var(--gradient-rainbow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glow-pink {
+  box-shadow: var(--shadow-glow-pink);
+}
+
+@utility glow-blue {
+  box-shadow: var(--shadow-glow-blue);
+}
+
+@utility glow-orange {
+  box-shadow: var(--shadow-glow-orange);
+}
+
+/* legacy aliases */
+@utility glow-green {
+  box-shadow: var(--shadow-glow-pink);
+}
+@utility glow-cyan {
+  box-shadow: var(--shadow-glow-blue);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+/* Circular rainbow ring — used on cards, avatars, hero motif */
+@utility neon-ring {
+  background: var(--gradient-rainbow);
+  border-radius: 9999px;
+  padding: 3px;
+  box-shadow:
+    0 0 24px oklch(0.72 0.29 350 / 0.35),
+    0 0 48px oklch(0.72 0.2 240 / 0.2);
+}
+
+/* Animated waveform bars (hidden playback) */
+@utility wave-bar {
+  display: inline-block;
+  width: 4px;
+  border-radius: 9999px;
+  background-image: var(--gradient-neon);
+  animation: wave 1s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { height: 12px; opacity: 0.6; }
+  50% { height: 44px; opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.72 0.29 350 / 0.55); }
+  50% { box-shadow: 0 0 0 18px oklch(0.72 0.29 350 / 0); }
+}
+
+@utility pulse-glow {
+  animation: pulse-glow 2.4s ease-out infinite;
+}
+
+@keyframes flip-in {
+  from { transform: rotateY(90deg); opacity: 0; }
+  to { transform: rotateY(0); opacity: 1; }
+}
+
+@utility animate-flip-in {
+  animation: flip-in 0.6s ease-out;
+}
+
+/* Slow rotating conic ring for hero + card motifs */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@utility animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+@utility animate-spin-slower {
+  animation: spin-slow 40s linear infinite;
+}
+
+/* Floating orbs — home hero */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
+  50% { transform: translateY(-24px) scale(1.06); opacity: 0.85; }
+}
+@utility animate-float {
+  animation: float-y 9s ease-in-out infinite;
+}
+
+/* Particle drift */
+@keyframes drift {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate3d(var(--dx, 20px), -120px, 0); opacity: 0; }
+}
+@utility animate-drift {
+  animation: drift 8s linear infinite;
+}
+
+/* Neon pulse for CTAs */
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px oklch(0.72 0.29 350 / 0.55),
+      0 0 40px oklch(0.75 0.22 45 / 0.35);
+  }
+  50% {
+    box-shadow:
+      0 0 30px oklch(0.72 0.29 350 / 0.75),
+      0 0 60px oklch(0.75 0.22 45 / 0.5);
+  }
+}
+@utility animate-neon-pulse {
+  animation: neon-pulse 2.6s ease-in-out infinite;
+}
+
+/* Scanning line sweep for the QR scanner frame */
+@keyframes scan-line {
+  0% { top: 8%; opacity: 0; }
+  10% { opacity: 1; }
+  50% { top: 92%; opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 8%; opacity: 0; }
+}
+@utility animate-scan-line {
+  animation: scan-line 2.2s ease-in-out infinite;
+}
+
